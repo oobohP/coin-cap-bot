@@ -53,6 +53,7 @@ function userList () {
     client.on('message', message => {
         if (message.content === prefix + 'start') {
             message.reply(' Coin Cap Bot Started')
+            message.reply('ITS TIME TO CAP: ' + userList);
             setInterval(function() {
                 message.reply('ITS TIME TO CAP: ' + userList);
             }, 1800000)
