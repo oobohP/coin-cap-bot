@@ -1,4 +1,5 @@
-const Discord = require('discord.js')
+const Discord = require('discord.js');
+const { clearInterval } = require('timers');
 const { prefix, token } = require('./config.json')
 
 // Creates an instance of the discord client
@@ -54,9 +55,14 @@ function userList () {
         if (message.content === prefix + 'start') {
             message.reply(' Coin Cap Bot Started')
             message.reply('ITS TIME TO CAP: ' + userList);
-            setInterval(function() {
+            interVal = setInterval(function() {
                 message.reply('ITS TIME TO CAP: ' + userList);
-            }, 1800000)
+            }, 7000)
+        }
+
+        if (message.content === prefix + 'stop') {
+            message.reply(' Coin Cap Bot Stopped')
+            clearInterval(interVal);
         }
     })
 }
