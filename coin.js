@@ -27,8 +27,9 @@ function userList () {
     // Adds user to list replies to user
     client.on('message', message => {
         if (message.content === prefix + 'add') {
+            console.log('pushed' + message.author.id)
             message.reply('Added: ' + message.member.displayName + ' to the user list')
-            userList.push(message.author)
+            userList.push(message.author.id)
         }
     })
 
@@ -36,6 +37,7 @@ function userList () {
     // Removes user from list replies to user
     client.on('message', message => {
         if (message.content === prefix + 'remove') {
+            console.log('removed user at ' + message.author.id)
             message.reply('removed: ' + message.member.displayName + ' from user list')
             userList.pop(message.author);
         }
@@ -46,6 +48,7 @@ function userList () {
     client.on('message', message => {
         if (message.content === prefix + 'show') {
             if (userList < 1) {
+                console.log(userList)
                 message.channel.send(' Looks like theres no users on the list yet!')
             } else {
                 message.channel.send(' Here is the current user list: ' + userList);
