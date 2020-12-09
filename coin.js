@@ -23,7 +23,8 @@ function userList () {
     // User list of people wanting to be added
     var userList = [];
 
-    // Adds user to list
+    // Create
+    // Adds user to list replies to user
     client.on('message', message => {
         if (message.content === prefix + 'add') {
             message.reply('Added: ' + message.member.displayName + ' to the user list')
@@ -31,7 +32,8 @@ function userList () {
         }
     })
 
-    // Removes user from list
+    // Delete
+    // Removes user from list replies to user
     client.on('message', message => {
         if (message.content === prefix + 'remove') {
             message.reply('removed: ' + message.member.displayName + ' from user list')
@@ -39,13 +41,14 @@ function userList () {
         }
     })
 
-    // Shows the user list
+    // Read
+    // Shows the user list sends to channel
     client.on('message', message => {
         if (message.content === prefix + 'show') {
             if (userList < 1) {
-                message.reply(' Looks like theres no users on the list yet!')
+                message.channel.send(' Looks like theres no users on the list yet!')
             } else {
-                message.reply(' Here is the current user list: ' + userList);
+                message.channel.send(' Here is the current user list: ' + userList);
             }
         }
     })
@@ -54,12 +57,13 @@ function userList () {
     client.on('message', message => {
         if (message.content === prefix + 'start') {
             message.reply(' Coin Cap Bot Started')
-            message.reply('ITS TIME TO CAP: ' + userList);
+            message.channel.send('ITS TIME TO CAP: ' + userList);
             interVal = setInterval(function() {
-                message.reply('ITS TIME TO CAP: ' + userList);
+                message.channel.send('ITS TIME TO CAP: ' + userList);
             }, 7000)
         }
 
+        // stops interval once user sends stop command
         if (message.content === prefix + 'stop') {
             message.reply(' Coin Cap Bot Stopped')
             clearInterval(interVal);
