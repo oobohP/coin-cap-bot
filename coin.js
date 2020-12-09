@@ -66,7 +66,11 @@ function userList () {
         // stops interval once user sends stop command
         if (message.content === prefix + 'stop') {
             message.reply(' Coin Cap Bot Stopped')
-            clearInterval(interVal);
+            try {
+                clearInterval(interVal);
+            } catch {
+                console.log('No Interval Started');
+            }
         }
     })
 }
