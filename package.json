@@ -1,0 +1,23 @@
+{
+  "name": "coin-cap",
+  "version": "1.0.0",
+  "description": "maplestory coin notifications",
+  "main": "coin.js",
+  "dependencies": {
+    "discord.js": "^12.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oobohP/coin-cap-bot.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oobohP/coin-cap-bot/issues"
+  },
+  "homepage": "https://github.com/oobohP/coin-cap-bot#readme"
+}
