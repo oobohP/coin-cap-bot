@@ -37,7 +37,9 @@ function userList () {
     client.on('message', message => {
         if (message.content === prefix + 'remove') {
             message.reply('removed: ' + message.member.displayName + ' from user list')
-            userList.pop(message.author);
+            userList = userList.filter(i => {
+                return i != message.member.id;
+            });
         }
     })
 
@@ -60,7 +62,7 @@ function userList () {
             message.channel.send('ITS TIME TO CAP: ' + userList);
             interVal = setInterval(function() {
                 message.channel.send('ITS TIME TO CAP: ' + userList);
-            }, 7000)
+            }, 1800000)
         }
 
         // stops interval once user sends stop command
