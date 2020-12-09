@@ -29,7 +29,7 @@ function userList () {
         if (message.content === prefix + 'add') {
             console.log('pushed' + message.author.id)
             message.reply('Added: ' + message.member.displayName + ' to the user list')
-            userList.push(message.author.id)
+            userList.push(message.author)
         }
     })
 
@@ -40,7 +40,7 @@ function userList () {
             console.log('removed user at ' + message.author.id)
             message.reply('removed: ' + message.member.displayName + ' from user list')
             userList = userList.filter(i => {
-                return i != message.member.id;
+                return i != message.author;
             });
         }
     })
@@ -65,6 +65,10 @@ function userList () {
             message.channel.send('ITS TIME TO CAP: ' + userList);
             interVal = setInterval(function() {
                 message.channel.send('ITS TIME TO CAP: ' + userList);
+                if (userList < 1) {
+                    message.channel.send('No Users Added to list, stopping bot')
+                    clearInterval(interVal)
+                }
             }, 1800000)
         }
 
